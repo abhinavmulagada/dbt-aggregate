@@ -18,3 +18,5 @@ LEFT JOIN `celo-testnet-production.blockscout_data.rpl_blocks` b
 ON t.block_hash = b.hash 
 WHERE DATE(b.timestamp) >= DATE_ADD(CURRENT_DATE(), INTERVAL -1 DAY) 
 AND DATE(b.timestamp) < CURRENT_DATE() GROUP BY DATE(b.timestamp)
+
+-- want to create a table in BigQuery, run this daily and append the results to a new table in BigQuery 
