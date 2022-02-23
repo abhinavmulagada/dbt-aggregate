@@ -1,5 +1,5 @@
 --DELETE FROM `celo-testnet-production.blockscout_data.transactions_by_day` WHERE date >= DATE_ADD(CURRENT_DATE(), INTERVAL -1 DAY); 
---INSERT INTO `celo-testnet-production.blockscout_data.transactions_by_day` 
+--INSERT INTO `celo-testnet-production.dbt_aggregate.aggregate-transactions`
 SELECT COUNT(1) as number_of_transactions, 
 SUM(CAST(t.gas_used as BIGNUMERIC)) as total_gas_used, 
 MIN(CAST(t.gas_used as BIGNUMERIC)) as min_gas_used, 
