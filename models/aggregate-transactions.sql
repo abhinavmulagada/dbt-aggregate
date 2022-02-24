@@ -1,5 +1,12 @@
 --DELETE FROM `celo-testnet-production.blockscout_data.transactions_by_day` WHERE date >= DATE_ADD(CURRENT_DATE(), INTERVAL -1 DAY); 
---INSERT INTO `celo-testnet-production.blockscout_data.transactions_by_day` 
+--INSERT INTO `celo-testnet-production.dbt_aggregate.aggregate-transactions`
+{{
+    config(
+        materialized='incremental'
+    )
+}}
+
+
 SELECT COUNT(1) as number_of_transactions, 
 SUM(CAST(t.gas_used as BIGNUMERIC)) as total_gas_used, 
 MIN(CAST(t.gas_used as BIGNUMERIC)) as min_gas_used, 
@@ -19,4 +26,9 @@ ON t.block_hash = b.hash
 WHERE DATE(b.timestamp) >= DATE_ADD(CURRENT_DATE(), INTERVAL -1 DAY) 
 AND DATE(b.timestamp) < CURRENT_DATE() GROUP BY DATE(b.timestamp)
 
--- want to create a table in BigQuery, run this daily and append the results to a new table in BigQuery 
+--{% if is_incremental() %}
+
+  -- this filter will only be applied on an incremental run
+  --where date > (select max(date) from {{ this }})
+
+--{% endif %}
