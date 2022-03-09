@@ -1,5 +1,3 @@
---DELETE FROM `celo-testnet-production.blockscout_data.transactions_by_day` WHERE date >= DATE_ADD(CURRENT_DATE(), INTERVAL -1 DAY); 
---INSERT INTO `celo-testnet-production.dbt_aggregate.aggregate-transactions`
 {{
     config(
         materialized='incremental',
@@ -25,8 +23,6 @@ MAX(t.updated_at) as updated_at
 FROM `celo-testnet-production.blockscout_data.rpl_transactions` t 
 LEFT JOIN `celo-testnet-production.blockscout_data.rpl_blocks` b 
 ON t.block_hash = b.hash
---WHERE DATE(b.timestamp) >= DATE_ADD(CURRENT_DATE(), INTERVAL -1 DAY) 
---AND DATE(b.timestamp) < CURRENT_DATE() 
 
 {% if is_incremental() %}
   where t.updated_at >= (select max(t.updated_at) from {{ this }} 
