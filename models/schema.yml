@@ -2,20 +2,9 @@
 version: 2
 
 models:
-  - name: my_first_dbt_model
-    description: "A starter dbt model"
-    columns:
-      - name: id
-        description: "The primary key for this table"
-        tests:
-          - unique
-          - not_null
+  - name: aggregate-transactions
+    description: "Aggregate daily transactions"
 
-  - name: my_second_dbt_model
-    description: "A starter dbt model"
+  - name: addresses_by_day
+    description: "Aggreagate daily contract and wallet addresses"
     columns:
-      - name: id
-        description: "The primary key for this table"
-        tests:
-          - unique
-          - not_null
