@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: aggregate-transactions
+  - name: aggregate_transactions
     description: "Aggregate daily transactions"
 
   - name: addresses_by_day
