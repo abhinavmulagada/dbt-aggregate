@@ -15,4 +15,4 @@ FROM `celo-testnet-production.blockscout_data.rpl_addresses`
                             FROM `celo-testnet-production.blockscout_data.addresses_by_day`)
 {% endif %}
 
-GROUP BY DATE(`inserted_at`)
+GROUP BY `date`
