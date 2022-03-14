@@ -18,8 +18,7 @@ SUM(CAST(t.value as BIGNUMERIC)) as total_value,
 MIN(CAST(t.value as BIGNUMERIC)) as min_value, 
 MAX(CAST(t.value as BIGNUMERIC)) as max_value, 
 CAST(AVG(CAST(t.value as BIGNUMERIC)) as BIGNUMERIC) as avg_value, 
-DATE(b.timestamp) as date,
-MAX(t.updated_at) as updated_at
+DATE(b.timestamp) as date
 FROM `celo-testnet-production.blockscout_data.rpl_transactions` t 
 LEFT JOIN `celo-testnet-production.blockscout_data.rpl_blocks` b 
 ON t.block_hash = b.hash

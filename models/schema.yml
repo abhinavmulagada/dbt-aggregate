@@ -4,5 +4,11 @@ models:
   - name: aggregate_transactions
     description: "Aggregate daily transactions"
 
-  - name: addresses_by_day
+  - name: aggregate_addresses_by_day
     description: "Aggreagate daily contract and wallet addresses"
+  
+  - name: aggregate_celo_wallets_by_day
+    description: "Aggreagate daily celo wallet counts"
+  
+  - name: aggregate_active_addresses_by_day
+    description: "Aggreagate active addresses by day (at least 1 transaction in the last 30 days)"
