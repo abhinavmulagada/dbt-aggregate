@@ -11,4 +11,4 @@ models:
     description: "Aggreagate daily celo wallet counts"
   
   - name: aggregate_active_addresses_by_day
-    description: "Aggreagate active addresses by day (at least 1 transaction in the last 30 days)"
+    description: "Aggreagate active contract/wallet addresses by day (at least 1 transaction in the last 30 days)"
