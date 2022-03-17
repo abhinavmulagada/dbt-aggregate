@@ -25,7 +25,6 @@ ON t.block_hash = b.hash
 
 {% if is_incremental() %}
   where t.updated_at >= (select max(t.updated_at) from {{ this }})
-  --WHERE DATE(b.timestamp) >= DATE_ADD(CURRENT_DATE(), INTERVAL -1 DAY) AND DATE(b.timestamp) < CURRENT_DATE() )
 {% endif %}
 
 GROUP BY `date`
