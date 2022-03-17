@@ -14,9 +14,8 @@ select DATE (t.inserted_at) as `date`,
              and DATE(t.inserted_at) < DATE_ADD(CURRENT_DATE(), INTERVAL -30 DAY) then 1 end) as new_contract_address,
        count(case when CONTAINS_SUBSTR((a.is_contract), 'false') 
              and DATE(t.inserted_at) < DATE_ADD(CURRENT_DATE(), INTERVAL -30 DAY) then 1 end) as new_wallet_address,
-from `celo-testnet-production.blockscout_data.rpl_celo_wallets` w
-inner join `celo-testnet-production.blockscout_data.rpl_transactions` t on t.from_address_hash = w.wallet_address_hash 
-inner join `celo-testnet-production.blockscout_data.rpl_addresses` a on a.`hash` = w.wallet_address_hash
+from `celo-testnet-production.blockscout_data.rpl_transactions` t
+inner join `celo-testnet-production.blockscout_data.rpl_addresses` a on a.`hash` = t.from_address_hash
 
 
 {% if is_incremental() %}
