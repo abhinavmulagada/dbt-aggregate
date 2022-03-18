@@ -19,5 +19,8 @@ models:
   - name: aggregate_addresses_transactions_by_day
     description: "Aggreagate address transactions by day"
   
-  - name: percent_change_addresses_by_month
-    description: "Calculate daily percentage of addresses relative to past 30 days"
+  - name: percent_change_total_addresses_by_month
+    description: "Calculate daily percentage of total addresses relative to past 30 days"
+  
+  - name: percent_change_address_by_month
+    description: "Calculate daily percentage of wallet/contract addresses relative to past 30 days"
