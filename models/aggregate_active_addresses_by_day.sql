@@ -27,7 +27,7 @@ from transaction_data_2
 
 
 {% if is_incremental() %}
-  WHERE `date` > (SELECT MAX(inserted_at) as max_date 
+  WHERE (date) > (SELECT MAX(DATE(inserted_at)) as max_date 
                             FROM `celo-testnet-production.blockscout_data.rpl_transactions`)
 {% endif %}
 
