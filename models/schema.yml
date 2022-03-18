@@ -12,3 +12,12 @@ models:
   
   - name: aggregate_active_addresses_by_day
     description: "Aggreagate active contract/wallet addresses by day (at least 1 transaction in the last 30 days)"
+  
+  - name: aggregate_addresses_balances_by_day
+    description: "Aggreagate address balances by day for CELO, cUSD, cEUR and cREAL"
+  
+  - name: aggregate_addresses_transactions_by_day
+    description: "Aggreagate address transactions by day"
+  
+  - name: percent_change_addresses_by_month
+    description: "Calculate daily percentage of addresses relative to past 30 days"
