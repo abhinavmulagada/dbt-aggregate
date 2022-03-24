@@ -27,3 +27,6 @@ models:
   
   - name: aggregate_wallet_addresses_by_day
     description: "Aggregate new and returning wallets by day based on overall transaction count"
+  
+    - name: aggregate_wallet_addresses_by_month
+    description: "Aggregate new and returning wallets by month based on aggregate_wallet_addresses_by_day"
