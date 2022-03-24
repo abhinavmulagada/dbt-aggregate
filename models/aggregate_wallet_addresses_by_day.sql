@@ -12,7 +12,8 @@ with transaction_count as(
     from `celo-testnet-production.blockscout_data.rpl_transactions` 
 ),
 wallet_by_day as (
- select DATE(inserted_at) as `date`, from_address_hash 
+ select DATE(inserted_at) as `date`, 
+        from_address_hash 
  from `celo-testnet-production.blockscout_data.rpl_transactions` 
  group by date, from_address_hash
 )
