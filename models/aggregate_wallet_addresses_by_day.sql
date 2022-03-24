@@ -12,7 +12,8 @@ with transaction_count as(
     from `celo-testnet-production.blockscout_data.rpl_transactions` 
 ),
 wallet_by_day as (
- select DATE(inserted_at) as `date`, from_address_hash 
+ select DATE(inserted_at) as `date`, 
+        from_address_hash 
  from `celo-testnet-production.blockscout_data.rpl_transactions` 
  group by date, from_address_hash
 )
@@ -24,7 +25,7 @@ on w.from_address_hash = t.from_address_hash
 
 
 {% if is_incremental() %}
-  WHERE (t.inserted_at) > (SELECT MAX(inserted_at) as max_date 
+  WHERE (`date`) > (SELECT MAX(inserted_at) as max_date 
                             FROM `celo-testnet-production.blockscout_data.rpl_transactions`)
 {% endif %}
 
