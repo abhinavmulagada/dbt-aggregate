@@ -1,3 +1,7 @@
+/*
+Need to figure out way to also get contract to contract transactions
+*/
+
 {{
     config(
         materialized='incremental',
