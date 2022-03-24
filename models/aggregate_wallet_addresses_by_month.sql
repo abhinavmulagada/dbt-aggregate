@@ -12,7 +12,7 @@ select sum(new_wallet_addresses) as new_wallet_addresses_by_month,
 from {{ref('aggregate_wallet_addresses_by_day')}}
 
 {% if is_incremental() %}
-  WHERE `most_recent_date` > (SELECT MAX(date) as max_date FROM {{ this }})
+  WHERE `most_recent_date` > (SELECT MAX(`most_recent_date`) as max_date FROM {{ this }})
 {% endif %}
 
 group by month
