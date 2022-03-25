@@ -30,4 +30,6 @@ models:
   
   - name: aggregate_wallet_addresses_by_month
     description: "Aggregate new and returning wallets by month based on aggregate_wallet_addresses_by_day"
-    
+  
+  - name: top_wallets_by_balance
+    description: "Get top 150 wallets by Celo Balance"
