@@ -36,3 +36,6 @@ models:
   
   - name: transaction_distribution
     description: "Get total transactions, and past 7 days"
+  
+  - name: aggregate_transactions_by_address
+    description: "Aggregate total number of transactions and grouped by address type"
