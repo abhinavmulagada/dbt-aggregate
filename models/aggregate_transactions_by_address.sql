@@ -1,10 +1,3 @@
-{{
-    config(
-        materialized='incremental',
-        unique_key='max_date'
-    )
-}}
-
 SELECT CASE
         WHEN token_contract_address_hash = '0x471ece3750da237f93b8e339c536989b8978a438' THEN 'CELO'
         
@@ -46,9 +39,5 @@ SELECT CASE
 FROM `celo-testnet-production.blockscout_data.rpl_token_transfers` t
 LEFT JOIN `celo-testnet-production.blockscout_data.rpl_blocks` b 
 ON t.block_hash = b.hash
-
-{% if is_incremental() %}
-  where max_date >= (select max(max_date) from {{ this }})
-{% endif %}
 
 group by name
