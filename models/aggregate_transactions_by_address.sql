@@ -48,7 +48,7 @@ LEFT JOIN `celo-testnet-production.blockscout_data.rpl_blocks` b
 ON t.block_hash = b.hash
 
 {% if is_incremental() %}
-  where MAX(DATE(b.timestamp)) >= (select max(max_date) from {{ this }})
+  where DATE(b.timestamp) >= (select max(max_date) from {{ this }})
 {% endif %}
 
 group by name
