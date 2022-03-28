@@ -5,34 +5,37 @@
     )
 }}
 
-SELECT
-  q1.to_address_hash,
-  q1.total AS total,
-  q2.total AS total_last_week,
-  q1.date
-FROM
-  (select to_address_hash, 
-          count(*) as total,
-          date(max(b.timestamp)) as date
+with daily_data as (
+select to_address_hash, 
+       date(b.timestamp) as date,
+       count(*) as daily_total
    from `celo-testnet-production.blockscout_data.rpl_transactions` t 
    left join `celo-testnet-production.blockscout_data.rpl_blocks` b 
    on t.block_hash = b.hash
-   group by t.to_address_hash  
-   order by total desc) AS q1
-INNER JOIN(
-  SELECT
-  to_address_hash,
-  COUNT(*) AS total
-FROM
-  `celo-testnet-production.blockscout_data.rpl_transactions`
-WHERE
-  inserted_at >= TIMESTAMP_SUB(CURRENT_TIMESTAMP(), INTERVAL 7 DAY)
-GROUP BY
-  to_address_hash
-ORDER BY
-  total DESC) AS q2
-ON
-  q1.to_address_hash=q2.to_address_hash
+   group by t.to_address_hash, date
+),
+total_data as (
+    select sum(daily_total) as total, 
+       to_address_hash
+    from daily_data 
+    group by to_address_hash
+),
+weekly_data as (
+    select sum(daily_total) as weekly_total,   
+           to_address_hash,
+           max(date) as max_date
+    from daily_data 
+    where date < DATE(CURRENT_TIMESTAMP())
+    and date >= DATE_SUB(DATE(CURRENT_TIMESTAMP()), INTERVAL 7 DAY)
+    group by to_address_hash
+)
+select t.total, 
+       w.weekly_total, 
+       w.to_address_hash, 
+       w.max_date 
+from weekly_data w 
+inner join total_data t 
+on t.to_address_hash = w.to_address_hash 
 
 
 {% if is_incremental() %}
@@ -40,4 +43,4 @@ ON
 {% endif %}
 
 ORDER BY
-  q1.total DESC
+  t.total DESC
