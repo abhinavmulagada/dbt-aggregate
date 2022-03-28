@@ -34,5 +34,5 @@ models:
   - name: top_wallets_by_balance
     description: "Get top 150 wallets sorted by Celo Balance"
   
-  - name: rpl_transaction_distribution
+  - name: transaction_distribution
     description: "Get total transactions, and past 7 days"
