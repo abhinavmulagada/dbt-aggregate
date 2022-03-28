@@ -1,10 +1,3 @@
-{{
-    config(
-        materialized='incremental',
-        unique_key='max_date'
-    )
-}}
-
 with daily_data as (
 select distinct to_address_hash, 
        date(b.timestamp) as date,
@@ -36,11 +29,3 @@ select t.total,
 from weekly_data w 
 inner join total_data t 
 on t.to_address_hash = w.to_address_hash 
-
-
-{% if is_incremental() %}
-  where `max_date` >= (select max(`max_date`) from {{ this }})
-{% endif %}
-
-ORDER BY
-  t.total DESC
