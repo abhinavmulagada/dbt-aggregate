@@ -1,7 +1,7 @@
 {{
     config(
         materialized='incremental',
-        unique_key='date'
+        unique_key='max_date'
     )
 }}
 
@@ -39,7 +39,7 @@ on t.to_address_hash = w.to_address_hash
 
 
 {% if is_incremental() %}
-  where `max_date` >= (select max(`date`) from {{ this }})
+  where `max_date` >= (select max(`max_date`) from {{ this }})
 {% endif %}
 
 ORDER BY
