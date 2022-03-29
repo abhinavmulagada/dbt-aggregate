@@ -39,3 +39,9 @@ models:
   
   - name: aggregate_transactions_by_address
     description: "Aggregate total number of transactions and grouped by address type"
+  
+  - name: transaction_avg_by_thirty_days
+    description: "Running average of transactions over last 30 days"
+  
+  - name: token_transfer_avg_by_thirty_days
+    description: "Running average of token transfers over last 30 days"
