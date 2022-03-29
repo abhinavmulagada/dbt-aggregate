@@ -1,3 +1,9 @@
+{{
+    config(
+        materialized='table'
+    )
+}}
+
 with daily_data as (
 select distinct to_address_hash, 
        date(b.timestamp) as date,
