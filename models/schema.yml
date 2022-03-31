@@ -45,3 +45,9 @@ models:
   
   - name: token_transfer_avg_by_thirty_days
     description: "Running average of token transfers over last 30 days"
+  
+  - name: stable_coin_token_transfer_by_day
+    description: "Token transfer by day for cStable coins"
+  
+  - name: stable_coin_token_transfer_by_day
+    description: "Weekly aggregation on top of stable_coin_token_transfer_by_day"
