@@ -49,7 +49,7 @@ models:
   - name: stable_coin_token_transfer_by_day
     description: "Token transfer by day for cStable coins"
   
-  - name: stable_coin_token_transfer_by_day
+  - name: stable_coin_token_transfer_by_week
     description: "Weekly aggregation on top of stable_coin_token_transfer_by_day"
   
   - name: stable_coin_active_addresses_by_day
