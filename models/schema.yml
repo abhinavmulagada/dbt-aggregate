@@ -51,3 +51,9 @@ models:
   
   - name: stable_coin_token_transfer_by_day
     description: "Weekly aggregation on top of stable_coin_token_transfer_by_day"
+  
+  - name: stable_coin_active_addresses_by_day
+    description: "Daily aggregation of active addresses grouped by cStables"
+  
+  - name: stable_coin_active_addresses_by_week
+    description: "Weekly aggregation on top of stable_coin_active_addresses_by_day"
