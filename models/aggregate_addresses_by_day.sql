@@ -1,3 +1,5 @@
+-- currently not in use
+
 {{
     config(
         materialized='incremental',
