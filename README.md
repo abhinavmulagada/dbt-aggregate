@@ -1,15 +1,23 @@
-Welcome to your new dbt project!
+# dbt for Data Services
+dbt repo from Data Services at cLabs
 
-### Using the starter project
+# About
+dbt is a tool to create views and table ontop your exisiting data warehouse solution. This project is configured to work with BigQuery.
 
-Try running the following commands:
-- dbt run
-- dbt test
+The views built here are read from DataStudio to create the charts found on our explorer page: https://explorer.celo.org/stats
+
+# Helpful Commands:
+
+Run all dbt models in a repo
+>dbt run
+
+Run a specific dbt model:
+>dbt run -m sql_filename_here.sql
+
+Re-run a specific model:
+>dbt run -m sql_filename_here.sql --full-refresh
 
 
-### Resources:
+
+# Resources:
 - Learn more about dbt [in the docs](https://docs.getdbt.com/docs/introduction)
-- Check out [Discourse](https://discourse.getdbt.com/) for commonly asked questions and answers
-- Join the [chat](https://community.getdbt.com/) on Slack for live discussions and support
-- Find [dbt events](https://events.getdbt.com) near you
-- Check out [the blog](https://blog.getdbt.com/) for the latest news on dbt's development and best practices
